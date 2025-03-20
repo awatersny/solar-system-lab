@@ -12,8 +12,8 @@ const solarSystem = [
   { name: "Neptune", ringSystem: true, moons: ["Triton", "Nereid"] }
 ];
 
-const find = (arr, target) => arr.find(planet => planet.name === target) 
 
+const find = (arr, target) => arr.find(planet => planet.name === target)
 // 1. Print the array of Jupiter's moons to the console (no for loop, just print the entire array).
 console.log(find(solarSystem, "Jupiter").moons)
 
@@ -191,18 +191,28 @@ const system = {
 };
 
 // 1. Console.log the mass of Mercury
-
+console.log(system.mercury.mass)
 
 // 2. Console.log the eccentricity of Venus
-
+console.log(system.venus.eccentricity)
 
 // 3. Console.log the sum of the number of satellites of Jupiter, Saturn, Uranus, and Neptune (131)
-
+console.log([
+  system.jupiter.satellites, system.saturn.satellites,
+  system.uranus.satellites, system.neptune.satellites
+].reduce((acc, satellites) => acc + parseInt(satellites), 0))
 
 // 4. Write a conditional that checks if Mercury's radiusp is a string (remember the typeof command). If Mercury's radiusp is a string, change the value to be the same as its radiuse value. (radiusp is radius at the poles, radiuse is radius at the equator).
-
+if(typeof system.mercury.radiusp === "string") {
+  if(typeof system.mercury.radiuse === "number") {
+    system.mercury.radiusp = system.mercury.radiuse
+  }
+}
 
 // 5. Console.log Mercury's radiusp (should be 2439, not 'same').
-
+console.log(system.mercury)
 
 // 6. Find the difference between Jupiter's momentum and Pluto's momentum. (To get momentum, you'll want the product of velocity and mass).
+const jupiterMomentum = system.jupiter.velocity * system.jupiter.mass
+const plutoMomentum = system.pluto.velocity * system.pluto.mass
+console.log(Math.abs(jupiterMomentum - plutoMomentum))
