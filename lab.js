@@ -11,28 +11,35 @@ const solarSystem = [
   { name: "Uranus", ringSystem: true, moons: ["Miranda", "Titania", "Ariel", "Umbriel"] },
   { name: "Neptune", ringSystem: true, moons: ["Triton", "Nereid"] }
 ];
-// 1. Print the array of Jupiter's moons to the console (no for loop, just print the entire array).
 
+const find = (arr, target) => arr.find(planet => planet.name === target) 
+
+// 1. Print the array of Jupiter's moons to the console (no for loop, just print the entire array).
+console.log(find(solarSystem, "Jupiter").moons)
 
 // 2. Print the name of Neptune's moon "Nereid" to the console.
-
+console.log(find(solarSystem, "Neptune").moons.find(moon => moon === "Nereid"))
 
 // 3. Add a new moon called "Endor" to Venus' moons array.
-
+find(solarSystem, "Venus").moons.push("Endor")
 
 // 4. Add a Pluto object to the solarSystem array using .push. The object should contain Pluto's name, ringSystem boolean, and moons array (which includes "Charon").
-
+solarSystem.push({name: "Pluto", ringSystem: false, moons: ["Charon"]})
 
 // 5. Add a new key-value pair to the the Earth object: the key should be 'diameter', and the value should be Earth's diameter in miles represented as a string.
-
+find(solarSystem, "Earth").diameter = "7,926.2"
 
 // 6. Change Mercury's ringSystem boolean to true.
-
+find(solarSystem, "Mercury").ringSystem = true
 
 // 7. Change Uranus' moon "Umbriel" to "Oberon"
-
+const uranusMoons = find(solarSystem, "Uranus").moons
+uranusMoons[uranusMoons.indexOf("Umbriel")] = "Oberon"
 
 // 8. Iterate through the solarSystem array and print only the objects that have a ringSystem (where ringSystem: true), and ignore the others.
+solarSystem.filter(planet => planet.ringSystem).forEach(planet => {
+  console.log(planet)
+})
 //////////////////////////////
 // The Solar System, Part 2 //
 //////////////////////////////
